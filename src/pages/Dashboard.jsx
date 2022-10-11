@@ -14,7 +14,7 @@ export const Dashboard = () => {
       navigate("/login");
     }
 
-    getProduct()
+    getProduct();
   }, []);
 
   const getProduct = async () => {
@@ -33,68 +33,69 @@ export const Dashboard = () => {
     } catch (error) {
       throw new Error(`Error: ${error}`);
     }
-  }
+  };
 
   return (
     <div className="w-full">
       <Navbar />
-      <h1>List Product</h1>
-      <div className="grid xl:grid-cols-4 gap-10 md:grid-cols-2 sm:grid-cols-1">
-      {products.map((item, index) => (
-        <div key={index} className="bg-red-100 rounded-lg p-5 m-5">
-          <p>{item.name}</p>
-          <p>{item.product_type.name}</p>
-          <p>Rp{item.price}</p>
-          <p>{item.operator.name}</p>
+      <div className="mx-40 my-5">
+        <h1 className="mb-5">List Product</h1>
+        <div className="grid xl:grid-cols-4 gap-10 md:grid-cols-2 sm:grid-cols-1">
+          {products.map((item, index) => (
+            <div key={index} className="bg-red-100 rounded-lg p-5">
+              <p>{item.name}</p>
+              <p>{item.product_type.name}</p>
+              <p>Rp{item.price}</p>
+              <p>{item.operator.name}</p>
+            </div>
+          ))}
         </div>
-      ))}
       </div>
     </div>
   );
 };
 
-
 // code_product
-// : 
+// :
 // "P51010103"
 // created_at
-// : 
+// :
 // "2022-07-17T17:58:06.272Z"
 // id
-// : 
+// :
 // 103
 // name
-// : 
+// :
 // "Token PLN 655.500"
 // operator
-// : 
+// :
 // created_at
-// : 
+// :
 // "2022-07-03T12:48:52.768Z"
 // id
-// : 
+// :
 // 1
 // name
-// : 
+// :
 // "Gopay"
 // [[Prototype]]
-// : 
+// :
 // Object
 // operator_id
-// : 
+// :
 // 1
 // price
-// : 
+// :
 // 655500
 // product_type
-// : 
+// :
 // {id: 51, name: 'Token PKN', created_at: '2022-07-03T12:40:53.936Z'}
 // product_type_id
-// : 
+// :
 // 51
 // qty
-// : 
+// :
 // 20
 // status
-// : 
+// :
 // true

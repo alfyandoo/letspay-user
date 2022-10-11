@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
+import { History } from "./pages/History";
 import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
 import { Register } from "./pages/Register";
@@ -13,19 +14,27 @@ export const App = () => {
     },
     {
       path: "/login",
-      element: <Login /> ,
+      element: <Login />,
     },
     {
       path: "/register",
-      element: <Register /> ,
+      element: <Register />,
+    },
+    {
+      path: "/product",
+      element: <>product</>,
+    },
+    {
+      path: "/product/:id",
+      element: <>product detail</>,
     },
     {
       path: "/history",
-      element: <>history</> ,
+      element: <History />,
     },
     {
       path: "/profile",
-      element: <Profile /> ,
+      element: <Profile />,
     },
     {
       path: "/*",

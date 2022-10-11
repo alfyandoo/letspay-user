@@ -13,10 +13,23 @@ export const Profile = () => {
     }
   }, []);
 
+  const Logout = () => {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  };
+
   return (
     <div className="w-full">
       <Navbar />
-      <h1>My Profile "nama user"</h1>
+      <div className="mx-40 my-5">
+        <h1>My Profile "nama user"</h1>
+        <button
+          className="my-5 px-5 py-2 rounded-xl bg-red-400 hover:bg-red-300 hover:text-gray-600"
+          onClick={() => Logout()}
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 };
