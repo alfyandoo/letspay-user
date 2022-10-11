@@ -1,23 +1,31 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { Dashboard } from "./pages/Dashboard";
+import { Login } from "./pages/Login";
+import { Profile } from "./pages/Profile";
+import { Register } from "./pages/Register";
 
 export const App = () => {
   const paths = [
     {
       path: "/",
-      element: <>Home</>,
+      element: <Dashboard />,
     },
     {
       path: "/login",
-      element: <>Login</>,
+      element: <Login /> ,
     },
     {
-      path: "/produk",
-      element: <>Produk</>,
+      path: "/register",
+      element: <Register /> ,
     },
     {
-      path: "/iklan-promo",
-      element: <>Iklan Promo</>,
+      path: "/history",
+      element: <>history</> ,
+    },
+    {
+      path: "/profile",
+      element: <Profile /> ,
     },
     {
       path: "/*",
