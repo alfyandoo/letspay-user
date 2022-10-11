@@ -15,7 +15,7 @@ export const Profile = () => {
 
   const Logout = () => {
     localStorage.removeItem("token");
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return (
