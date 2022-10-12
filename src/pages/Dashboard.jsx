@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../api/api";
+import { ListProduct } from "../components/Dashboard/ListProduct";
 import { Navbar } from "../components/Templates/Navbar";
 
 export const Dashboard = () => {
@@ -21,7 +22,7 @@ export const Dashboard = () => {
         },
       });
       const data = await response.json();
-      console.log(data);
+      console.log(JSON.stringify(data));
       if (data.messages === "success") {
         setProducts(data.products);
       }
@@ -43,12 +44,7 @@ export const Dashboard = () => {
           <h1 className="mb-5">List Product</h1>
           <div className="grid grid-cols-1 sm:grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
             {products.map((item, index) => (
-              <div key={index} className="bg-red-100 rounded-lg p-5">
-                <p>{item.name}</p>
-                <p>{item.product_type.name}</p>
-                <p>Rp{item.price}</p>
-                <p>{item.operator.name}</p>
-              </div>
+              <ListProduct key={index} item={item} />
             ))}
           </div>
         </div>
