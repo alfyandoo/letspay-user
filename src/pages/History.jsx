@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 import { BASE_URL } from "../api/api";
 import { Navbar } from "../components/Templates/Navbar";
 
 export const History = () => {
   const [history, setHistory] = useState([]);
-  const navigate = useNavigate();
 
   const getHistoryTransaction = async () => {
     try {
@@ -27,18 +25,13 @@ export const History = () => {
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-
     getHistoryTransaction();
   }, []);
 
   return (
-    <div className="w-full">
+    <>
       <Navbar />
-      <div className="mx-40 my-5">
+      <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
         <h1>History</h1>
         <div className="grid grid-cols-1">
           {history.map((item, index) => (
@@ -52,7 +45,7 @@ export const History = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

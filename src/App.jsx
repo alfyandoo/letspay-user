@@ -5,12 +5,17 @@ import { History } from "./pages/History";
 import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
 import { Register } from "./pages/Register";
+import { ProtectedRoute } from "./components/Templates/ProtectedRoute";
 
 export const App = () => {
   const paths = [
     {
       path: "/",
-      element: <Dashboard />,
+      element: (
+        <ProtectedRoute>
+          <Dashboard />
+        </ProtectedRoute>
+      ),
     },
     {
       path: "/login",
@@ -22,19 +27,35 @@ export const App = () => {
     },
     {
       path: "/product",
-      element: <>product</>,
+      element: (
+        <ProtectedRoute>
+          <>product</>
+        </ProtectedRoute>
+      ),
     },
     {
       path: "/product/:id",
-      element: <>product detail</>,
+      element: (
+        <ProtectedRoute>
+          <>product detail</>
+        </ProtectedRoute>
+      ),
     },
     {
       path: "/history",
-      element: <History />,
+      element: (
+        <ProtectedRoute>
+          <History />
+        </ProtectedRoute>
+      ),
     },
     {
       path: "/profile",
-      element: <Profile />,
+      element: (
+        <ProtectedRoute>
+          <Profile />
+        </ProtectedRoute>
+      ),
     },
     {
       path: "/*",

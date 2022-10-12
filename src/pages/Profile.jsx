@@ -7,29 +7,26 @@ export const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
+    // getProfile();
   }, []);
 
-  const Logout = () => {
+  const logout = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
 
   return (
-    <div className="w-full">
+    <>
       <Navbar />
-      <div className="mx-40 my-5">
+      <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
         <h1>My Profile "nama user"</h1>
         <button
           className="my-5 px-5 py-2 rounded-xl bg-red-400 hover:bg-red-300 hover:text-gray-600"
-          onClick={() => Logout()}
+          onClick={() => logout()}
         >
           Logout
         </button>
       </div>
-    </div>
+    </>
   );
 };

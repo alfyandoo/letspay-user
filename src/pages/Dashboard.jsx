@@ -1,19 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../api/api";
 import { Navbar } from "../components/Templates/Navbar";
 
 export const Dashboard = () => {
   const [products, setProducts] = useState([]);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (!token) {
-      navigate("/login");
-    }
-
     getProduct();
   }, []);
 
@@ -36,11 +29,11 @@ export const Dashboard = () => {
   };
 
   return (
-    <div className="w-full">
+    <>
       <Navbar />
-      <div className="mx-40 my-5">
+      <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
         <h1 className="mb-5">List Product</h1>
-        <div className="grid xl:grid-cols-4 gap-10 md:grid-cols-2 sm:grid-cols-1">
+        <div className="grid grid-cols-1 sm:grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
           {products.map((item, index) => (
             <div key={index} className="bg-red-100 rounded-lg p-5">
               <p>{item.name}</p>
@@ -51,7 +44,7 @@ export const Dashboard = () => {
           ))}
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
