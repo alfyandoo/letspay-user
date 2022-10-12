@@ -5,12 +5,14 @@ import { Navbar } from "../components/Templates/Navbar";
 
 export const Dashboard = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     getProduct();
   }, []);
 
   const getProduct = async () => {
+    setLoading(true);
     try {
       const response = await fetch(`${BASE_URL}/products`, {
         method: "GET",
@@ -26,24 +28,31 @@ export const Dashboard = () => {
     } catch (error) {
       throw new Error(`Error: ${error}`);
     }
+    setLoading(false);
   };
 
   return (
     <>
       <Navbar />
-      <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
-        <h1 className="mb-5">List Product</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
-          {products.map((item, index) => (
-            <div key={index} className="bg-red-100 rounded-lg p-5">
-              <p>{item.name}</p>
-              <p>{item.product_type.name}</p>
-              <p>Rp{item.price}</p>
-              <p>{item.operator.name}</p>
-            </div>
-          ))}
+      {loading ? (
+        <div>
+          <h1>Loading...</h1>
         </div>
-      </div>
+      ) : (
+        <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
+          <h1 className="mb-5">List Product</h1>
+          <div className="grid grid-cols-1 sm:grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
+            {products.map((item, index) => (
+              <div key={index} className="bg-red-100 rounded-lg p-5">
+                <p>{item.name}</p>
+                <p>{item.product_type.name}</p>
+                <p>Rp{item.price}</p>
+                <p>{item.operator.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </>
   );
 };

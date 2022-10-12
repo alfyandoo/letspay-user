@@ -5,8 +5,14 @@ import { Navbar } from "../components/Templates/Navbar";
 
 export const History = () => {
   const [history, setHistory] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    getHistoryTransaction();
+  }, []);
 
   const getHistoryTransaction = async () => {
+    setLoading(true);
     try {
       const response = await fetch(`${BASE_URL}/users/transactions`, {
         method: "GET",
@@ -22,29 +28,32 @@ export const History = () => {
     } catch (error) {
       throw new Error(`Error: ${error}`);
     }
+    setLoading(false);
   };
-
-  useEffect(() => {
-    getHistoryTransaction();
-  }, []);
 
   return (
     <>
       <Navbar />
-      <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
-        <h1>History</h1>
-        <div className="grid grid-cols-1">
-          {history.map((item, index) => (
-            <div key={index} className="bg-green-100 rounded-lg p-5 my-5">
-              <p>{item.code_transaction}</p>
-              <p>Produk: {item.product.name}</p>
-              <p>{item.status}</p>
-              <p>{item.user.username}</p>
-              <p>Payment method: {item.payment_method.name}</p>
-            </div>
-          ))}
+      {loading ? (
+        <div>
+          <h1>Loading...</h1>
         </div>
-      </div>
+      ) : (
+        <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
+          <h1>History</h1>
+          <div className="grid grid-cols-1">
+            {history.map((item, index) => (
+              <div key={index} className="bg-green-100 rounded-lg p-5 my-5">
+                <p>{item.code_transaction}</p>
+                <p>Produk: {item.product.name}</p>
+                <p>{item.status}</p>
+                <p>{item.user.username}</p>
+                <p>Payment method: {item.payment_method.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
     </>
   );
 };
