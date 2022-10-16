@@ -25,7 +25,7 @@ export const Login = () => {
       console.log(data);
 
       if (data.messages === "success") {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("tokenUser", data.token);
         navigate("/");
       }
     } catch (error) {

@@ -10,7 +10,7 @@ export const Detail = ({ product, paymentMethod }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
+        Authorization: `Bearer ${localStorage.getItem("tokenUser")}`,
       },
       body: JSON.stringify({
         product_id: Number(productId),
