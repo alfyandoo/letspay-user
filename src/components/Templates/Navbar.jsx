@@ -12,8 +12,8 @@ export const Navbar = () => {
             <div className="flex items-center justify-between h-16">
               <div className="flex items-center">
                 <div className="flex-shrink-0">
-                  <h1 className="cursor-pointer font-extrabold">
-                    LETS<span className="text-white hover:text-black">PAY</span>
+                  <h1 className="cursor-pointer font-extrabold hover:text-white">
+                    LETS<span className="text-white">PAY</span><span>!</span>
                   </h1>
                 </div>
                 <div className="hidden md:block">

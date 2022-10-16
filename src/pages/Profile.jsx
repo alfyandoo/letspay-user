@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../api/api";
+import { Loading } from "../components/Templates/Loading";
 import { Navbar } from "../components/Templates/Navbar";
 
 export const Profile = () => {
@@ -42,9 +43,7 @@ export const Profile = () => {
     <>
       <Navbar />
       {loading ? (
-        <div>
-          <h1>Loading...</h1>
-        </div>
+        <Loading />
       ) : (
         <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
           <h1>My Profile</h1>

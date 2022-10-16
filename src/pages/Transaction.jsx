@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../api/api";
+import { Loading } from "../components/Templates/Loading";
 import { Navbar } from "../components/Templates/Navbar";
 import { ListTransaction } from "../components/Transaction/ListTransaction";
 
@@ -36,15 +37,17 @@ export const Transaction = () => {
     <>
       <Navbar />
       {loading ? (
-        <div>
-          <h1>Loading...</h1>
-        </div>
+        <Loading />
       ) : (
         <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
           <h1>List Transaction</h1>
           <div className="grid grid-cols-1">
             {transaction.map((item, index) => (
-              <ListTransaction key={index} item={item} getHistoryTransaction={getHistoryTransaction}  />
+              <ListTransaction
+                key={index}
+                item={item}
+                getHistoryTransaction={getHistoryTransaction}
+              />
             ))}
           </div>
         </div>

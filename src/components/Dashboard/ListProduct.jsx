@@ -7,6 +7,7 @@ export const ListProduct = ({ item }) => {
       <p>{item.name}</p>
       <p>{item.product_type.name}</p>
       <p>Rp{item.price}</p>
+      <p>Stock {item.qty}</p>
       <p>{item.operator.name}</p>
     </div>
   );

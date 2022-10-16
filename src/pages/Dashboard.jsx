@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../api/api";
 import { ListProduct } from "../components/Dashboard/ListProduct";
+import { Loading } from "../components/Templates/Loading";
 import { Navbar } from "../components/Templates/Navbar";
 
 export const Dashboard = () => {
@@ -36,9 +37,7 @@ export const Dashboard = () => {
     <>
       <Navbar />
       {loading ? (
-        <div>
-          <h1>Loading...</h1>
-        </div>
+        <Loading />
       ) : (
         <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
           <div className="w-full h-[600px] bg-orange-200 rounded-lg mb-5">

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { BASE_URL } from "../api/api";
 import { Navbar } from "../components/Templates/Navbar";
 import { Detail } from "../components/Products/Detail";
+import { Loading } from "../components/Templates/Loading";
 
 export const ProductDetail = () => {
   const { id } = useParams();
@@ -54,9 +55,7 @@ export const ProductDetail = () => {
     <>
       <Navbar />
       {loading ? (
-        <div>
-          <h1>Loading...</h1>
-        </div>
+        <Loading />
       ) : (
         <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
           <h1 className="mb-5">Detail Product</h1>
