@@ -41,6 +41,9 @@ export const Dashboard = () => {
         </div>
       ) : (
         <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
+          <div className="w-full h-[600px] bg-orange-200 rounded-lg mb-5">
+            rencana banner swipe disini
+          </div>
           <h1 className="mb-5">List Product</h1>
           <div className="grid grid-cols-1 sm:grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
             {products.map((item, index) => (

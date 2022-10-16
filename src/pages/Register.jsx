@@ -41,7 +41,7 @@ export const Register = () => {
 
   return (
     <>
-      <h1 className="text-center">Login User</h1>
+      <h1 className="text-center">Register</h1>
       <div className="flex flex-col m-5">
         <input
           type="email"

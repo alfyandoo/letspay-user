@@ -35,7 +35,7 @@ export const Login = () => {
 
   return (
     <>
-      <h1 className="text-center">Login User</h1>
+      <h1 className="text-center">Login</h1>
       <div className="flex flex-col m-5">
         <input
           type="text"
