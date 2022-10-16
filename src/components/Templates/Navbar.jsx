@@ -26,10 +26,10 @@ export const Navbar = () => {
                     </Link>
 
                     <Link
-                      to="/history"
+                      to="/transaction"
                       className="text-white hover:text-gray-700 px-3 py-2 font-medium text-2xl rounded-md"
                     >
-                      History
+                      Transaction
                     </Link>
 
                     <Link

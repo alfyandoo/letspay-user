@@ -1,7 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
-import { History } from "./pages/History";
+import { Transaction } from "./pages/Transaction";
 import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
 import { Register } from "./pages/Register";
@@ -44,10 +44,10 @@ export const App = () => {
       ),
     },
     {
-      path: "/history",
+      path: "/transaction",
       element: (
         <ProtectedRoute>
-          <History />
+          <Transaction />
         </ProtectedRoute>
       ),
     },

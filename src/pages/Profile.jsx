@@ -54,7 +54,7 @@ export const Profile = () => {
           <h1>Phone: {user.phone}</h1>
           <button
             className="my-5 px-5 py-2 rounded-xl bg-green-400 hover:bg-green-300 hover:text-gray-600"
-            onClick={() => navigate("/history")}
+            onClick={() => navigate("/transaction")}
           >
             My Transaction
           </button>

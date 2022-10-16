@@ -2,14 +2,16 @@
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../api/api";
 import { Navbar } from "../components/Templates/Navbar";
+import { ListTransaction } from "../components/Transaction/ListTransaction";
 
-export const History = () => {
-  const [history, setHistory] = useState([]);
+export const Transaction = () => {
+  const [transaction, setTransaction] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [reRenderListTransaction, setReRenderListTransaction] = useState(false);
 
   useEffect(() => {
     getHistoryTransaction();
-  }, []);
+  }, [reRenderListTransaction]);
 
   const getHistoryTransaction = async () => {
     setLoading(true);
@@ -23,7 +25,7 @@ export const History = () => {
       const data = await response.json();
       console.log(JSON.stringify(data));
       if (data.messages === "success") {
-        setHistory(data.transactions);
+        setTransaction(data.transactions);
       }
     } catch (error) {
       throw new Error(`Error: ${error}`);
@@ -40,16 +42,10 @@ export const History = () => {
         </div>
       ) : (
         <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
-          <h1>History</h1>
+          <h1>List Transaction</h1>
           <div className="grid grid-cols-1">
-            {history.map((item, index) => (
-              <div key={index} className="bg-green-100 rounded-lg p-5 my-5">
-                <p>{item.code_transaction}</p>
-                <p>Produk: {item.product.name}</p>
-                <p>{item.status}</p>
-                <p>{item.user.username}</p>
-                <p>Payment method: {item.payment_method.name}</p>
-              </div>
+            {transaction.map((item, index) => (
+              <ListTransaction key={index} item={item} setReRenderListTransaction={setReRenderListTransaction} />
             ))}
           </div>
         </div>

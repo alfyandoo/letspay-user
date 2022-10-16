@@ -6,7 +6,7 @@ export const Detail = ({ product, paymentMethod }) => {
   const [paymentMethodId, setPaymentMethodId] = useState("");
 
   const transaction = async (productId, chargeNumber, paymentMethodId) => {
-    const response = await fetch(`${BASE_URL}/transactions`, {
+    const response = await fetch(`${BASE_URL}/users/transactions`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
