@@ -6,6 +6,8 @@ import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
 import { Register } from "./pages/Register";
 import { ProtectedRoute } from "./components/Templates/ProtectedRoute";
+import { Product } from "./pages/Product";
+import { ProductDetail } from "./pages/ProductDetail";
 
 export const App = () => {
   const paths = [
@@ -29,7 +31,7 @@ export const App = () => {
       path: "/product",
       element: (
         <ProtectedRoute>
-          <>product</>
+          <Product />
         </ProtectedRoute>
       ),
     },
@@ -37,7 +39,7 @@ export const App = () => {
       path: "/product/:id",
       element: (
         <ProtectedRoute>
-          <>product detail</>
+          <ProductDetail />
         </ProtectedRoute>
       ),
     },

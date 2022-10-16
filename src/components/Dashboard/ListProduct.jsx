@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 export const ListProduct = ({ item }) => {
+  const navigate = useNavigate()
   return (
-    <div className="bg-red-100 rounded-lg p-5">
+    <div className="bg-red-100 rounded-lg p-5 cursor-pointer" onClick={() => navigate(`/product/${item.id}`)}>
       <p>{item.name}</p>
       <p>{item.product_type.name}</p>
       <p>Rp{item.price}</p>
