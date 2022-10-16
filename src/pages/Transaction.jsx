@@ -7,11 +7,10 @@ import { ListTransaction } from "../components/Transaction/ListTransaction";
 export const Transaction = () => {
   const [transaction, setTransaction] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [reRenderListTransaction, setReRenderListTransaction] = useState(false);
 
   useEffect(() => {
     getHistoryTransaction();
-  }, [reRenderListTransaction]);
+  }, []);
 
   const getHistoryTransaction = async () => {
     setLoading(true);
@@ -45,7 +44,7 @@ export const Transaction = () => {
           <h1>List Transaction</h1>
           <div className="grid grid-cols-1">
             {transaction.map((item, index) => (
-              <ListTransaction key={index} item={item} setReRenderListTransaction={setReRenderListTransaction} />
+              <ListTransaction key={index} item={item} getHistoryTransaction={getHistoryTransaction}  />
             ))}
           </div>
         </div>

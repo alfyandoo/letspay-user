@@ -1,6 +1,6 @@
 import { BASE_URL } from "../../api/api";
 
-export const ListTransaction = ({ item, setReRenderListTransaction }) => {
+export const ListTransaction = ({ item }) => {
   const confirmPayment = async () => {
     try {
       const response = await fetch(
