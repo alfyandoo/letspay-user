@@ -19,7 +19,7 @@ export const Transaction = () => {
       const response = await fetch(`${BASE_URL}/users/transactions`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Authorization: `Bearer ${localStorage.getItem("tokenUser")}`,
         },
       });
       const data = await response.json();
