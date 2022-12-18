@@ -8,10 +8,11 @@ import { ListTransaction } from "../components/Transaction/ListTransaction";
 export const Transaction = () => {
   const [transaction, setTransaction] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [updateStatusProduct, setUpdateStatusProduct] = useState(false);
 
   useEffect(() => {
     getHistoryTransaction();
-  }, []);
+  }, [updateStatusProduct]);
 
   const getHistoryTransaction = async () => {
     setLoading(true);
@@ -23,7 +24,7 @@ export const Transaction = () => {
         },
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data), "list");
       if (data.messages === "success") {
         setTransaction(data.transactions);
       }
@@ -35,11 +36,10 @@ export const Transaction = () => {
 
   return (
     <>
-      <Navbar />
       {loading ? (
         <Loading />
       ) : (
-        <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
+        <div className="my-5">
           <h1>List Transaction</h1>
           <div className="grid grid-cols-1">
             {transaction.map((item, index) => (
@@ -47,6 +47,7 @@ export const Transaction = () => {
                 key={index}
                 item={item}
                 getHistoryTransaction={getHistoryTransaction}
+                setUpdateStatusProduct={setUpdateStatusProduct}
               />
             ))}
           </div>

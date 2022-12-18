@@ -53,11 +53,10 @@ export const ProductDetail = () => {
 
   return (
     <>
-      <Navbar />
       {loading ? (
         <Loading />
       ) : (
-        <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
+        <div className="my-5">
           <h1 className="mb-5">Detail Product</h1>
           <Detail product={product} paymentMethod={paymentMethod} />
         </div>

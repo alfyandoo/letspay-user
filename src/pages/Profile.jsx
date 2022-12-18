@@ -41,11 +41,10 @@ export const Profile = () => {
 
   return (
     <>
-      <Navbar />
       {loading ? (
         <Loading />
       ) : (
-        <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
+        <div className="my-5">
           <h1>My Profile</h1>
           <img src="https://ui-avatars.com/api/?name=alfyando&background=random" alt="user" className="rounded-full" />
           <h1>Name: {user.name}</h1>

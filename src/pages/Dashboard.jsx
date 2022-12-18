@@ -35,11 +35,10 @@ export const Dashboard = () => {
 
   return (
     <>
-      <Navbar />
       {loading ? (
         <Loading />
       ) : (
-        <div className="mx-5 sm:mx-10 md:mx-20 lg:mx-40 my-5">
+        <div className="my-5">
           <div className="w-full h-[600px] bg-orange-200 rounded-lg mb-5">
             rencana banner swipe disini
           </div>

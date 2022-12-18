@@ -1,6 +1,6 @@
 import { BASE_URL } from "../../api/api";
 
-export const ListTransaction = ({ item }) => {
+export const ListTransaction = ({ item, getHistoryTransaction, setUpdateStatusProduct }) => {
   const confirmPayment = async () => {
     try {
       const response = await fetch(
@@ -13,9 +13,9 @@ export const ListTransaction = ({ item }) => {
         }
       );
       const data = await response.json();
-      console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data), "poi");
       if (data.messages === "success") {
-        window.location.reload();
+        setUpdateStatusProduct(true);
       }
     } catch (error) {
       throw new Error(`Error: ${error}`);
@@ -33,7 +33,7 @@ export const ListTransaction = ({ item }) => {
 
       {item.status === "pending" && (
         <button
-          onClick={() => confirmPayment()}
+          onClick={async () => await confirmPayment()}
           className="p-5 w-full mt-3 rounded-lg bg-blue-200 hover:bg-blue-400 hover:text-white"
         >
           Confirm Payment
