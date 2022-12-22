@@ -99,11 +99,11 @@ export const App = () => {
       element: <>not found</>,
     },
   ];
-
+  console.log(authUser, 'authuser');
   return (
     <AuthContext.Provider value={authContextValue}>
       <header>
-        <Navbar />
+        {authUser && <Navbar />}
       </header>
       <main className="w-full relative bg-[#FFFDF8] px-5 sm:px-10 md:px-20 lg:px-40">
         <Routes>

@@ -1,11 +1,13 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../api/api";
 import { Loading } from "../components/Templates/Loading";
+import { AuthContext } from "../contexts/AuthContext";
 
 export const Profile = () => {
   const navigate = useNavigate();
+  const { setAuthUser } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState([]);
 
@@ -35,6 +37,7 @@ export const Profile = () => {
 
   const logout = () => {
     localStorage.removeItem("tokenUser");
+    setAuthUser(false);
     navigate("/login");
   };
 
@@ -45,7 +48,11 @@ export const Profile = () => {
       ) : (
         <div className="my-5">
           <h1>My Profile</h1>
-          <img src="https://ui-avatars.com/api/?name=alfyando&background=random" alt="user" className="rounded-full" />
+          <img
+            src="https://ui-avatars.com/api/?name=alfyando&background=random"
+            alt="user"
+            className="rounded-full"
+          />
           <h1>Name: {user.name}</h1>
           <h1>Email: {user.email}</h1>
           <h1>Username: {user.username}</h1>

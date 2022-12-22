@@ -1,15 +1,17 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../api/api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Register } from "./Register";
+import { AuthContext } from "../contexts/AuthContext";
 
 export const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
+  const { setAuthUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const login = async () => {
@@ -30,6 +32,7 @@ export const Login = () => {
 
       if (data.messages === "success") {
         localStorage.setItem("tokenUser", data.token);
+        setAuthUser(data)
         navigate("/");
       }
     } catch (error) {

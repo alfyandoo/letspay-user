@@ -32,6 +32,7 @@ export const Register = ({ setShowRegister }) => {
       console.log(data);
 
       if (data.messages === "success") {
+        setShowRegister(false)
         navigate("/login");
       }
     } catch (error) {
