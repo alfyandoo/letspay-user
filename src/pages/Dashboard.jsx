@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { BASE_URL } from "../api/api";
 import { ListProduct } from "../components/Dashboard/ListProduct";
 import { Loading } from "../components/Templates/Loading";
-import { Navbar } from "../components/Templates/Navbar";
 
 export const Dashboard = () => {
   const [products, setProducts] = useState([]);
