@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../api/api";
 import { Loading } from "../components/Templates/Loading";
-import { Navbar } from "../components/Templates/Navbar";
 import { ListTransaction } from "../components/Transaction/ListTransaction";
 
 export const Transaction = () => {
