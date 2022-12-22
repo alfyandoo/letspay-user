@@ -1,31 +1,35 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../api/api";
-import { ListProduct } from "../components/Dashboard/ListProduct";
+import { ListProduct } from "../components/Products/ListProduct";
 import { Loading } from "../components/Templates/Loading";
-import { Navbar } from "../components/Templates/Navbar";
+import { Navigation, Autoplay } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
-  const [products, setProducts] = useState([]);
+  const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
-    getProduct();
+    getCategory();
   }, []);
 
-  const getProduct = async () => {
+  const getCategory = async () => {
     setLoading(true);
     try {
-      const response = await fetch(`${BASE_URL}/products`, {
+      const response = await fetch(`${BASE_URL}/product_types`, {
         method: "GET",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("tokenUser")}`,
-        },
       });
       const data = await response.json();
       console.log(JSON.stringify(data));
       if (data.messages === "success") {
-        setProducts(data.products);
+        setCategory(data.product_types);
       }
     } catch (error) {
       throw new Error(`Error: ${error}`);
@@ -39,14 +43,69 @@ export const Dashboard = () => {
         <Loading />
       ) : (
         <div className="my-5">
-          <div className="w-full h-[600px] bg-orange-200 rounded-lg mb-5">
-            rencana banner swipe disini
+          <div className="w-full h-[600px] rounded-lg mb-5">
+            <Swiper
+              // install Swiper modules
+              modules={[Navigation, Autoplay]}
+              loopedSlides={3}
+              spaceBetween={5}
+              slidesPerView={1}
+              loop={true}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+            >
+              <SwiperSlide>
+                <div>
+                  <img
+                    src="https://www.rumahweb.com/journal/wp-content/uploads/2006/02/Banner-Pengertian-Web-Hosting-Fitur-dan-Cara-Dapat-Gratisannya-740x389.png"
+                    alt="img_banner"
+                    className="w-full rounded-xl"
+                  />
+                </div>
+              </SwiperSlide>
+              <SwiperSlide>
+                <div>
+                  <img
+                    src="https://www.rumahweb.com/journal/wp-content/uploads/2006/02/Banner-Pengertian-Web-Hosting-Fitur-dan-Cara-Dapat-Gratisannya-740x389.png"
+                    alt="img_banner"
+                    className="w-full rounded-xl"
+                  />
+                </div>
+              </SwiperSlide>
+            </Swiper>
           </div>
-          <h1 className="mb-5">List Product</h1>
-          <div className="grid grid-cols-1 sm:grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-4">
-            {products.map((item, index) => (
-              <ListProduct key={index} item={item} />
-            ))}
+
+          <div className="my-20">
+            <h1 className="text-center font-bold text-3xl mb-5">
+              Product Category
+            </h1>
+            <div>
+              <Swiper
+                // install Swiper modules
+                modules={[Navigation, Autoplay]}
+                loopedSlides={3}
+                spaceBetween={20}
+                slidesPerView={category.length > 3 ? 3 : category.length}
+                loop={category.length > 3 ? true : false}
+                autoplay={{
+                  delay: 3000,
+                  disableOnInteraction: false,
+                }}
+              >
+                {category.map((item, index) => (
+                  <SwiperSlide key={index}>
+                    <div
+                      className="rounded-xl p-5 cursor-pointer font-semibold bg-primary hover:bg-secondary"
+                      onClick={() => navigate(`/product?=${item.name}`)}
+                    >
+                      <h1 className="text-white text-center">{item.name}</h1>
+                    </div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
         </div>
       )}
