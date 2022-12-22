@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../api/api";
-import { ListProduct } from "../components/Products/ListProduct";
 import { Loading } from "../components/Templates/Loading";
 import { Navigation, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";

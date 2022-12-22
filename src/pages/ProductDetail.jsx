@@ -2,7 +2,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../api/api";
-import { Navbar } from "../components/Templates/Navbar";
 import { Detail } from "../components/Products/Detail";
 import { Loading } from "../components/Templates/Loading";
 

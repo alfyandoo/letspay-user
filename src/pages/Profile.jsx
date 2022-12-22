@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../api/api";
 import { Loading } from "../components/Templates/Loading";
-import { Navbar } from "../components/Templates/Navbar";
 
 export const Profile = () => {
   const navigate = useNavigate();
