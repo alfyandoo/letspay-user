@@ -6,15 +6,19 @@ import { BASE_URL } from "../api/api";
 export const Product = () => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("All");
   const [loading, setLoading] = useState(false);
-
-  const productsFilter = products.filter((item) => item.status === "active");
-  console.log(productsFilter);
+  let productsFilter = [];
 
   useEffect(() => {
     getProduct();
-    getCategory()
+    getCategory();
   }, []);
+
+  function handleCategoryChange(event) {
+    console.log(event.target.value);
+    setSelectedCategory(event.target.value);
+  }
 
   const getCategory = async () => {
     setLoading(true);
@@ -23,7 +27,6 @@ export const Product = () => {
         method: "GET",
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
       if (data.messages === "success") {
         setCategory(data.product_types);
       }
@@ -43,7 +46,6 @@ export const Product = () => {
         },
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
       if (data.messages === "success") {
         setProducts(data.products);
       }
@@ -53,6 +55,12 @@ export const Product = () => {
     setLoading(false);
   };
 
+  productsFilter =
+    selectedCategory === "All"
+      ? products
+      : products.filter((item) => item.product_type.name === selectedCategory);
+
+
   return (
     <>
       {loading ? (
@@ -60,19 +68,29 @@ export const Product = () => {
       ) : (
         <div className="my-5">
           <div className="flex justify-between">
-          <h1>List Product</h1>
-          <select name="All" id="All" defaultValue="All">
-            {category.map((item, index) => (
-              <option key={index} value={item.id}>
-                {item.name}
-              </option>
-            ))}
-          </select>
+            <h1>List Product</h1>
+            <select
+              name="All"
+              id="All"
+              defaultValue="Pulsa"
+              onChange={handleCategoryChange}
+            >
+              <option value="All">All</option>
+              {category.map((item, index) => (
+                <option key={index} value={item.name}>
+                  {item.name}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="grid grid-cols-1">
-            {products.map((item, index) => (
-              <ListProduct key={index} item={item} />
-            ))}
+            {!productsFilter || productsFilter.length === 0 ? (
+              <p>Product not found</p>
+            ) : (
+              productsFilter.map((item, index) => (
+                <ListProduct key={index} item={item} />
+              ))
+            )}
           </div>
         </div>
       )}

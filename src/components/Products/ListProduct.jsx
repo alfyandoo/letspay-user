@@ -7,11 +7,11 @@ export const ListProduct = ({ item }) => {
       className="border rounded-xl p-5 mb-5 cursor-pointer shadow-md hover:shadow-none"
       onClick={() => navigate(`/product/${item.id}`)}
     >
-      <p>{item.name}</p>
-      <p>{item.product_type.name}</p>
-      <p>Rp{item.price}</p>
-      <p>Stock {item.qty}</p>
-      <p>{item.operator.name}</p>
+      <p>{item?.name}</p>
+      <p>{item?.product_type?.name}</p>
+      <p>Rp{item?.price}</p>
+      <p>Stock {item?.qty}</p>
+      <p>{item?.operator?.name}</p>
     </div>
   );
 };

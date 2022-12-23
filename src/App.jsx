@@ -28,7 +28,7 @@ export const App = () => {
         },
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
+
       if (data.messages === "success") {
         setAuthUser(data.user);
       }
@@ -99,7 +99,7 @@ export const App = () => {
       element: <>not found</>,
     },
   ];
-  console.log(authUser, 'authuser');
+  
   return (
     <AuthContext.Provider value={authContextValue}>
       <header>
