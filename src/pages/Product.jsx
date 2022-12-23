@@ -31,7 +31,7 @@ export const Product = () => {
       }
     getProduct();
     getCategory();
-  }, [selectedCategory]);
+  }, []);
 
   function handleCategoryChange(event) {
     setSelectedCategory(event.target.value);
@@ -83,7 +83,7 @@ export const Product = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="my-5">
+        <div className="py-5 bg-purple-20">
           <div className="flex justify-between">
             <h1>List Product</h1>
             <select

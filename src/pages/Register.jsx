@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../api/api";
+import Swal from "sweetalert2";
 
 export const Register = ({ setShowRegister }) => {
   const [email, setEmail] = useState("");
@@ -32,6 +33,13 @@ export const Register = ({ setShowRegister }) => {
       console.log(data);
 
       if (data.messages === "success") {
+        Swal.fire({
+          icon: "success",
+          title: "Register Success",
+          html: `Please Sign In`,
+          confirmButtonText: "OK",
+          showCancelButton: false,
+        });
         setShowRegister(false)
         navigate("/login");
       }

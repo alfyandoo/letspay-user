@@ -5,6 +5,7 @@ import { BASE_URL } from "../api/api";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Register } from "./Register";
 import { AuthContext } from "../contexts/AuthContext";
+import Swal from "sweetalert2";
 
 export const Login = () => {
   const [username, setUsername] = useState("");
@@ -29,6 +30,16 @@ export const Login = () => {
 
       const data = await response.json();
       console.log(data);
+
+      if (data.messages === "username atau password salah") {
+        Swal.fire({
+          icon: "error",
+          title: "Login Failed",
+          html: `username atau password salah`,
+          confirmButtonText: "OK",
+          showCancelButton: false,
+        });
+      }
 
       if (data.messages === "success") {
         localStorage.setItem("tokenUser", data.token);

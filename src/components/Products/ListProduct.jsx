@@ -7,11 +7,35 @@ export const ListProduct = ({ item }) => {
       className="border rounded-xl p-5 mb-5 cursor-pointer shadow-md hover:shadow-none"
       onClick={() => navigate(`/product/${item.id}`)}
     >
-      <p>{item?.name}</p>
-      <p>{item?.product_type?.name}</p>
-      <p>Rp{item?.price}</p>
-      <p>Stock {item?.qty}</p>
-      <p>{item?.operator?.name}</p>
+      <div class="flex">
+        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+          <p>Product</p>
+          <p class="mr-2 font-bold">:</p>
+        </div>
+        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p class="font-bold">{item?.name}</p>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+          <p>Price</p>
+          <p class="mr-2 font-bold">:</p>
+        </div>
+        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p class="font-bold">Rp{item?.price}</p>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+          <p>Stock</p>
+          <p class="mr-2 font-bold">:</p>
+        </div>
+        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p class="font-bold">Rp{item?.qty}</p>
+        </div>
+      </div>
     </div>
   );
 };

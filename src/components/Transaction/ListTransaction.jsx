@@ -1,6 +1,10 @@
 import { BASE_URL } from "../../api/api";
 
-export const ListTransaction = ({ item, getHistoryTransaction, setUpdateStatusProduct }) => {
+export const ListTransaction = ({
+  item,
+  getHistoryTransaction,
+  setUpdateStatusProduct,
+}) => {
   const confirmPayment = async () => {
     try {
       const response = await fetch(
@@ -23,13 +27,65 @@ export const ListTransaction = ({ item, getHistoryTransaction, setUpdateStatusPr
   };
 
   return (
-    <div className="bg-green-100 rounded-lg p-5 my-5">
-      <p>{item.code_transaction}</p>
-      <p>Produk: {item.product.name}</p>
-      <p>{item.status}</p>
-      <p>{item.price}</p>
-      <p>{item.user.username}</p>
-      <p>Payment method: {item.payment_method.name}</p>
+    <div className={`${item?.status === 'pending' ? 'bg-yellow-100' : 'bg-green-100'} rounded-lg p-5 my-5`}>
+      <div class="flex">
+        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+          <p>Code Transaction</p>
+          <p class="mr-2 font-bold">:</p>
+        </div>
+        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p class="font-bold">{item.code_transaction}</p>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+          <p>Produk</p>
+          <p class="mr-2 font-bold">:</p>
+        </div>
+        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p class="font-bold">{item?.product?.name}</p>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+          <p>Status</p>
+          <p class="mr-2 font-bold">:</p>
+        </div>
+        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p class="font-bold">{item.status}</p>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+          <p>Price</p>
+          <p class="mr-2 font-bold">:</p>
+        </div>
+        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p class="font-bold">{item.price}</p>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+          <p>Username</p>
+          <p class="mr-2 font-bold">:</p>
+        </div>
+        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p class="font-bold">{item.user.username}</p>
+        </div>
+      </div>
+
+      <div class="flex">
+        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+          <p>Payment method</p>
+          <p class="mr-2 font-bold">:</p>
+        </div>
+        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p class="font-bold">{item.payment_method.name}</p>
+        </div>
+      </div>
 
       {item.status === "pending" && (
         <button

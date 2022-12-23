@@ -46,7 +46,7 @@ export const Profile = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="my-5">
+        <div className="py-5 w-full h-screen">
           <h1>My Profile</h1>
           <img
             src="https://ui-avatars.com/api/?name=alfyando&background=random"

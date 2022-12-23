@@ -38,7 +38,7 @@ export const Transaction = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="my-5">
+        <div className="py-5">
           <h1>List Transaction</h1>
           <div className="grid grid-cols-1">
             {transaction.map((item, index) => (

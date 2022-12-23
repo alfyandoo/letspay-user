@@ -49,23 +49,31 @@ export const App = () => {
     {
       path: "/",
       element: (
-        <ProtectedRoute>
+        <ProtectedRoute mode="auth">
           <Dashboard />
         </ProtectedRoute>
       ),
     },
     {
       path: "/login",
-      element: <Login />,
+      element: (
+        <ProtectedRoute mode="public">
+          <Login />
+        </ProtectedRoute>
+      ),
     },
     {
       path: "/register",
-      element: <Register />,
+      element: (
+        <ProtectedRoute mode="public">
+          <Register />
+        </ProtectedRoute>
+      ),
     },
     {
       path: "/product",
       element: (
-        <ProtectedRoute>
+        <ProtectedRoute mode="auth">
           <Product />
         </ProtectedRoute>
       ),
@@ -73,7 +81,7 @@ export const App = () => {
     {
       path: "/product/:id",
       element: (
-        <ProtectedRoute>
+        <ProtectedRoute mode="auth">
           <ProductDetail />
         </ProtectedRoute>
       ),
@@ -81,7 +89,7 @@ export const App = () => {
     {
       path: "/transaction",
       element: (
-        <ProtectedRoute>
+        <ProtectedRoute mode="auth">
           <Transaction />
         </ProtectedRoute>
       ),
@@ -89,7 +97,7 @@ export const App = () => {
     {
       path: "/profile",
       element: (
-        <ProtectedRoute>
+        <ProtectedRoute mode="auth">
           <Profile />
         </ProtectedRoute>
       ),
@@ -99,12 +107,10 @@ export const App = () => {
       element: <>not found</>,
     },
   ];
-  
+
   return (
     <AuthContext.Provider value={authContextValue}>
-      <header>
-        {authUser && <Navbar />}
-      </header>
+      <header>{authUser && <Navbar />}</header>
       <main className="w-full relative bg-[#FFFDF8] px-5 sm:px-10 md:px-20 lg:px-40">
         <Routes>
           {paths.map((item, index) => (
@@ -112,6 +118,17 @@ export const App = () => {
           ))}
         </Routes>
       </main>
+      {authUser && (
+        <footer>
+          <div className="fixed z-10 w-full bottom-0 bg-secondary py-3">
+            <div className="flex justify-center">
+              <p className="text-white text-sm">
+                © 2022 All Rights Reserved. LETSPAY
+              </p>
+            </div>
+          </div>
+        </footer>
+      )}
     </AuthContext.Provider>
   );
 };

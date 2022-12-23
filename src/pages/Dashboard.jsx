@@ -41,7 +41,7 @@ export const Dashboard = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="my-5">
+        <div className="py-5">
           <div className="w-full h-[600px] rounded-lg mb-5">
             <Swiper
               // install Swiper modules
