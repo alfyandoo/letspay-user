@@ -11,12 +11,29 @@ export const Product = () => {
   let productsFilter = [];
 
   useEffect(() => {
+    const search = window.location.search;
+      let type = "";
+
+      if (!!search) {
+        type = decodeURI(search.replace("?&type=", ""));
+      }
+
+      if (type === "Pulsa") {
+        setSelectedCategory("Pulsa");
+      }
+
+      if (type === "Token") {
+        setSelectedCategory("Token");
+      }
+
+      if (type === "E-Wallet") {
+        setSelectedCategory("E-Wallet");
+      }
     getProduct();
     getCategory();
-  }, []);
+  }, [selectedCategory]);
 
   function handleCategoryChange(event) {
-    console.log(event.target.value);
     setSelectedCategory(event.target.value);
   }
 
@@ -72,7 +89,7 @@ export const Product = () => {
             <select
               name="All"
               id="All"
-              defaultValue="Pulsa"
+              defaultValue={selectedCategory}
               onChange={handleCategoryChange}
             >
               <option value="All">All</option>

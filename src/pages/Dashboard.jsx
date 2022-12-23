@@ -97,7 +97,7 @@ export const Dashboard = () => {
                   <SwiperSlide key={index}>
                     <div
                       className="rounded-xl p-5 cursor-pointer font-semibold bg-primary hover:bg-secondary"
-                      onClick={() => navigate(`/product?=${item.name}`)}
+                      onClick={() => navigate(`/product?&type=${item.name}`)}
                     >
                       <h1 className="text-white text-center">{item.name}</h1>
                     </div>
