@@ -7,11 +7,10 @@ import { ListTransaction } from "../components/Transaction/ListTransaction";
 export const Transaction = () => {
   const [transaction, setTransaction] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [updateStatusProduct, setUpdateStatusProduct] = useState(false);
 
   useEffect(() => {
     getHistoryTransaction();
-  }, [updateStatusProduct]);
+  }, []);
 
   const getHistoryTransaction = async () => {
     setLoading(true);
