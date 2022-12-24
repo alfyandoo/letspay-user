@@ -17,9 +17,9 @@ export const ListTransaction = ({
         }
       );
       const data = await response.json();
-      console.log(JSON.stringify(data), "poi");
+      
       if (data.messages === "success") {
-        setUpdateStatusProduct(true);
+        window.location.reload();
       }
     } catch (error) {
       throw new Error(`Error: ${error}`);

@@ -3,11 +3,13 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../api/api";
 import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 export const Register = ({ setShowRegister }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [name, setName] = useState("");
   const [Phone, setPhone] = useState("");
   const navigate = useNavigate();
@@ -32,6 +34,16 @@ export const Register = ({ setShowRegister }) => {
       const data = await response.json();
       console.log(data);
 
+      if (data.messages === "error insert user") {
+        Swal.fire({
+          icon: "error",
+          title: "Register Failed",
+          html: `Fill all field correctly | username or email already exist`,
+          confirmButtonText: "OK",
+          showCancelButton: false,
+        });
+      }
+
       if (data.messages === "success") {
         Swal.fire({
           icon: "success",
@@ -40,7 +52,7 @@ export const Register = ({ setShowRegister }) => {
           confirmButtonText: "OK",
           showCancelButton: false,
         });
-        setShowRegister(false)
+        setShowRegister(false);
         navigate("/login");
       }
     } catch (error) {
@@ -78,15 +90,28 @@ export const Register = ({ setShowRegister }) => {
               setUsername(event.target.value);
             }}
           />
-          <input
-            type="password"
-            className="border-2 rounded-lg px-2 mb-3 py-4"
-            placeholder="input password"
-            value={password}
-            onChange={(event) => {
-              setPassword(event.target.value);
-            }}
-          />
+          <div className="relative w-full">
+            <input
+              type={showPassword ? "text" : "password"}
+              className="border-2 rounded-lg px-2 mb-3 py-4 w-full"
+              placeholder="input password"
+              value={password}
+              onChange={(event) => {
+                setPassword(event.target.value);
+              }}
+            />
+            {showPassword ? (
+              <FaEyeSlash
+                onClick={() => setShowPassword((prevState) => !prevState)}
+                className="absolute cursor-pointer text-xl top-3 right-4 bottom-40 translate-y-1/2 text-gray-300 hover:text-gray-200"
+              />
+            ) : (
+              <FaEye
+                onClick={() => setShowPassword((prevState) => !prevState)}
+                className="absolute cursor-pointer text-xl top-3 right-4 bottom-40 translate-y-1/2 text-gray-300 hover:text-gray-200"
+              />
+            )}
+          </div>
           <input
             type="text"
             className="border-2 rounded-lg px-2 mb-3 py-4"

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BASE_URL } from "../../api/api";
+import Swal from "sweetalert2";
 
 export const Detail = ({ product, paymentMethod }) => {
   const [chargeNumber, setChargeNumber] = useState("");
@@ -19,7 +20,20 @@ export const Detail = ({ product, paymentMethod }) => {
       }),
     });
     const data = await response.json();
-    console.log(JSON.stringify(data));
+    
+    if (data.messages === "success") {
+      Swal.fire({
+        icon: "success",
+        title: "Success",
+        text: "Transaction Success",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!",
+      });
+    }
   };
 
   return (

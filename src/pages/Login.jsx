@@ -7,7 +7,7 @@ import { Register } from "./Register";
 import { AuthContext } from "../contexts/AuthContext";
 import Swal from "sweetalert2";
 
-export const Login = () => {
+export const Login = ({ authUser }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

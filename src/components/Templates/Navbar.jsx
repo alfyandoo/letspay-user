@@ -1,86 +1,87 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
-import { Transition } from "@headlessui/react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useContext, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthContext";
+import { BASE_URL } from "../../api/api";
 
 export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const { authUser, setAuthUser } = useContext(AuthContext);
+  const [user, setUser] = useState([]);
+  const [navbar, setNavbar] = useState(false);
+  const [showLogout, setShowLogout] = useState(false);
+  const navigate = useNavigate();
+  console.log(authUser, "authUser");
+  useEffect(() => {
+    getProfile()
+  }, [])
+
+  const getProfile = async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/users/profiles`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("tokenUser")}`,
+        },
+      });
+      const data = await response.json();
+      console.log(JSON.stringify(data));
+      if (data.messages === "success") {
+        setUser(data.user);
+      }
+    } catch (error) {
+      throw new Error(`Error: ${error}`);
+    }
+  };
+
+  console.log(user, "user");
+
+  const logout = () => {
+    setAuthUser(null);
+    setShowLogout(false);
+    navigate("/login");
+  };
+
   return (
-    <>
-      <nav className="bg-primary">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <h1 className="cursor-pointer font-extrabold hover:text-white">
-                  LETS<span className="text-white">PAY</span>
-                  <span>!</span>
-                </h1>
-              </div>
-              <div className="hidden md:block">
-                <div className="ml-10 flex items-baseline justify-between space-x-4">
-                  <Link
-                    to="/"
-                    className="hover:text-secondary text-white px-3 py-2 font-medium text-2xl rounded-md"
-                  >
-                    Home
-                  </Link>
-
-                  <Link
-                    to="/transaction"
-                    className="text-white hover:text-secondary px-3 py-2 font-medium text-2xl rounded-md"
-                  >
-                    Transaction
-                  </Link>
-
-                  <Link
-                    to="/profile"
-                    className="text-white hover:text-secondary px-3 py-2 font-medium text-2xl rounded-md"
-                  >
-                    Profile
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <div className="-mr-2 flex md:hidden">
+    <nav className="w-full bg-primary shadow">
+      <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
+        <div>
+          <div className="flex items-center justify-between py-3 md:py-5 md:block">
+            <h2 className="text-2xl font-extrabold text-secondary hover:text-white">
+              LETS<span className="text-white">PAY</span>!
+            </h2>
+            <div className="md:hidden">
               <button
-                onClick={() => setIsOpen(!isOpen)}
                 type="button"
-                className="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                aria-controls="mobile-menu"
-                aria-expanded="false"
+                className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                onClick={() => setNavbar(!navbar)}
               >
-                <span className="sr-only">main menu</span>
-                {!isOpen ? (
+                {navbar ? (
                   <svg
-                    className="block h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
+                    className="w-6 h-6"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
                   >
                     <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M4 6h16M4 12h16M4 18h16"
+                      fillRule="evenodd"
+                      d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293
+                      4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clipRule="evenodd"
                     />
                   </svg>
                 ) : (
                   <svg
-                    className="block h-6 w-6"
                     xmlns="http://www.w3.org/2000/svg"
+                    className="w-6 h-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    aria-hidden="true"
+                    strokeWidth={2}
                   >
                     <path
                       strokeLinecap="round"
                       strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M6 18L18 6M6 6l12 12"
+                      d="M4 6h16M4 12h16M4 18h16"
                     />
                   </svg>
                 )}
@@ -88,44 +89,75 @@ export const Navbar = () => {
             </div>
           </div>
         </div>
-
-        <Transition
-          show={isOpen}
-          enter="transition ease-out duration-100 transform"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="transition ease-in duration-75 transform"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          {() => (
-            <div className="md:hidden" id="mobile-menu">
-              <div className="flex flex-col px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <Link
-                  to="/"
-                  className="hover:text-gray-700 text-white px-3 py-2 font-medium text-2xl rounded-md"
-                >
-                  Home
-                </Link>
-
-                <Link
-                  to="/history"
-                  className="text-white hover:text-gray-700 px-3 py-2 font-medium text-2xl rounded-md"
-                >
-                  History
-                </Link>
-
-                <Link
-                  to="/profile"
-                  className="text-white hover:text-gray-700 px-3 py-2 font-medium text-2xl rounded-md"
-                >
-                  Profile
-                </Link>
-              </div>
-            </div>
-          )}
-        </Transition>
-      </nav>
-    </>
+        <div>
+          <div
+            className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
+              navbar ? "block" : "hidden"
+            }`}
+          >
+            <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+              {authUser && (
+                <>
+                  <li className="text-white  hover:text-secondary">
+                    <Link
+                      to="/"
+                      className="py-4 px-4 font-semibold hover:text-secondary rounded-md"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li className="text-white  hover:text-secondary">
+                    <Link
+                      to="/product"
+                      className="py-4 px-4 font-semibold hover:text-secondary rounded-md"
+                    >
+                      Product
+                    </Link>
+                  </li>
+                  <li className="text-white  hover:text-secondary">
+                    <Link
+                      to="/transaction"
+                      className="py-4 px-4 font-semibold hover:text-secondary rounded-md"
+                    >
+                      Transaction
+                    </Link>
+                  </li>
+                  <div
+                    className="px-4 flex items-center relative z-10 cursor-pointer"
+                    onMouseEnter={() => {
+                      setShowLogout(true);
+                    }}
+                    onMouseLeave={() => {
+                      setShowLogout(false);
+                    }}
+                    onClick={() => {
+                      navigate("/profile");
+                    }}
+                  >
+                    <img
+                      src={`https://ui-avatars.com/api/?name=${user.username}&background=random`}
+                      alt={user.username}
+                      className="w-12 h-12 rounded-full bg-blue-100"
+                    />
+                    {showLogout && (
+                      <div className="absolute top-0 left-20 flex flex-col items-center justify-center">
+                        <h1>{authUser?.name}</h1>
+                        <button
+                          type="button"
+                          onClick={() => logout()}
+                          className=" bg-white w-20 h-8 rounded-lg text-red-500 hover:text-red-700 shadow-lg"
+                        >
+                          Logout
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
   );
 };

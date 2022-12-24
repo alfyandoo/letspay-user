@@ -4,7 +4,6 @@ import { Dashboard } from "./pages/Dashboard";
 import { Transaction } from "./pages/Transaction";
 import { Login } from "./pages/Login";
 import { Profile } from "./pages/Profile";
-import { Register } from "./pages/Register";
 import { ProtectedRoute } from "./components/Templates/ProtectedRoute";
 import { Product } from "./pages/Product";
 import { ProductDetail } from "./pages/ProductDetail";
@@ -58,15 +57,7 @@ export const App = () => {
       path: "/login",
       element: (
         <ProtectedRoute mode="public">
-          <Login />
-        </ProtectedRoute>
-      ),
-    },
-    {
-      path: "/register",
-      element: (
-        <ProtectedRoute mode="public">
-          <Register />
+          <Login authUser={authUser} />
         </ProtectedRoute>
       ),
     },

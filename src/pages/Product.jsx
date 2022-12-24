@@ -12,23 +12,23 @@ export const Product = () => {
 
   useEffect(() => {
     const search = window.location.search;
-      let type = "";
+    let type = "";
 
-      if (!!search) {
-        type = decodeURI(search.replace("?&type=", ""));
-      }
+    if (!!search) {
+      type = decodeURI(search.replace("?&type=", ""));
+    }
 
-      if (type === "Pulsa") {
-        setSelectedCategory("Pulsa");
-      }
+    if (type === "Pulsa") {
+      setSelectedCategory("Pulsa");
+    }
 
-      if (type === "Token") {
-        setSelectedCategory("Token");
-      }
+    if (type === "Token") {
+      setSelectedCategory("Token");
+    }
 
-      if (type === "E-Wallet") {
-        setSelectedCategory("E-Wallet");
-      }
+    if (type === "E-Wallet") {
+      setSelectedCategory("E-Wallet");
+    }
     getProduct();
     getCategory();
   }, []);
@@ -77,7 +77,6 @@ export const Product = () => {
       ? products
       : products.filter((item) => item.product_type.name === selectedCategory);
 
-
   return (
     <>
       {loading ? (
@@ -85,10 +84,13 @@ export const Product = () => {
       ) : (
         <div className="py-5 bg-purple-20">
           <div className="flex justify-between">
-            <h1>List Product</h1>
+            <h1 className="text-center font-bold text-3xl mb-5 text-secondary">
+              Our Product
+            </h1>
             <select
               name="All"
               id="All"
+              className="bg-[#FFFDF8] focus:outline-none focus:shadow-outline"
               defaultValue={selectedCategory}
               onChange={handleCategoryChange}
             >
@@ -100,7 +102,7 @@ export const Product = () => {
               ))}
             </select>
           </div>
-          <div className="grid grid-cols-1">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-5">
             {!productsFilter || productsFilter.length === 0 ? (
               <p>Product not found</p>
             ) : (

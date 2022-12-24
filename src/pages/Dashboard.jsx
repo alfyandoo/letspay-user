@@ -26,7 +26,7 @@ export const Dashboard = () => {
         method: "GET",
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
+      
       if (data.messages === "success") {
         setCategory(data.product_types);
       }
@@ -77,7 +77,7 @@ export const Dashboard = () => {
           </div>
 
           <div className="my-20">
-            <h1 className="text-center font-bold text-3xl mb-5">
+            <h1 className="text-center font-bold text-3xl mb-5 text-secondary">
               Product Category
             </h1>
             <div>
