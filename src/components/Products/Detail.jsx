@@ -37,7 +37,7 @@ export const Detail = ({ product, paymentMethod }) => {
   };
 
   return (
-    <>
+    <div className="absolute">
       <div className="bg-red-100 rounded-lg p-5">
         <p>{product?.name}</p>
         <p>{product?.product_type?.name}</p>
@@ -79,6 +79,6 @@ export const Detail = ({ product, paymentMethod }) => {
           Buy
         </button>
       </div>
-    </>
+    </div>
   );
 };

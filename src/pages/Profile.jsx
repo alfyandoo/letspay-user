@@ -47,29 +47,67 @@ export const Profile = () => {
         <Loading />
       ) : (
         <div className="py-5 w-full h-screen">
-          <h1>My Profile</h1>
+          <h1 className="font-bold text-3xl mb-5 text-secondary">My Profile</h1>
           <img
             src="https://ui-avatars.com/api/?name=alfyando&background=random"
             alt="user"
-            className="rounded-full"
+            className="rounded-full mb-5"
           />
-          <h1>Name: {user.name}</h1>
-          <h1>Email: {user.email}</h1>
-          <h1>Username: {user.username}</h1>
-          <h1>Phone: {user.phone}</h1>
-          <button
-            className="my-5 px-5 py-2 rounded-xl bg-green-400 hover:bg-green-300 hover:text-gray-600"
-            onClick={() => navigate("/transaction")}
-          >
-            My Transaction
-          </button>
+          <div class="flex">
+            <div class="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
+              <p>Name</p>
+              <p class="mr-2 font-bold">:</p>
+            </div>
+            <div class="w-[60%] sm:w-[60%] md:w-[90%]">
+              <p class="font-bold">{user.name}</p>
+            </div>
+          </div>
 
-          <button
-            className="my-5 px-5 py-2 rounded-xl bg-red-400 hover:bg-red-300 hover:text-gray-600"
-            onClick={() => logout()}
-          >
-            Logout
-          </button>
+          <div class="flex">
+            <div class="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
+              <p>Email</p>
+              <p class="mr-2 font-bold">:</p>
+            </div>
+            <div class="w-[60%] sm:w-[60%] md:w-[90%]">
+              <p class="font-bold">{user.email}</p>
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
+              <p>Username</p>
+              <p class="mr-2 font-bold">:</p>
+            </div>
+            <div class="w-[60%] sm:w-[60%] md:w-[90%]">
+              <p class="font-bold">{user.username}</p>
+            </div>
+          </div>
+
+          <div class="flex">
+            <div class="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
+              <p>Phone</p>
+              <p class="mr-2 font-bold">:</p>
+            </div>
+            <div class="w-[60%] sm:w-[60%] md:w-[90%]">
+              <p class="font-bold">{user.phone}</p>
+            </div>
+          </div>
+
+          <div className="flex space-x-5">
+            <button
+              className="my-5 px-5 py-2 rounded-xl bg-green-400 hover:bg-green-300 hover:text-gray-600"
+              onClick={() => navigate("/transaction")}
+            >
+              My Transaction
+            </button>
+
+            <button
+              className="my-5 px-5 py-2 rounded-xl bg-red-400 hover:bg-red-300 hover:text-gray-600"
+              onClick={() => logout()}
+            >
+              Logout
+            </button>
+          </div>
         </div>
       )}
     </>

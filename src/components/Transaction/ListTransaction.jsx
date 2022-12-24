@@ -1,4 +1,5 @@
 import { BASE_URL } from "../../api/api";
+import Swal from "sweetalert2";
 
 export const ListTransaction = ({
   item,
@@ -19,7 +20,11 @@ export const ListTransaction = ({
       const data = await response.json();
       
       if (data.messages === "success") {
-        window.location.reload();
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Payment Success",
+        });
       }
     } catch (error) {
       throw new Error(`Error: ${error}`);

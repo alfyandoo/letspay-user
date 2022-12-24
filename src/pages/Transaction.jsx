@@ -39,8 +39,10 @@ export const Transaction = () => {
         <Loading />
       ) : (
         <div className="py-5">
-          <h1>List Transaction</h1>
-          <div className="grid grid-cols-1">
+          <h1 className="font-bold text-3xl mb-5 text-secondary">
+            List Transaction
+          </h1>
+          <div className="grid grid-cols-1 mb-10">
             {transaction.map((item, index) => (
               <ListTransaction
                 key={index}

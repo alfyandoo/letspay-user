@@ -31,6 +31,8 @@ export const Product = () => {
     }
     getProduct();
     getCategory();
+
+    window.scrollTo(0, 0);
   }, []);
 
   function handleCategoryChange(event) {
@@ -82,9 +84,9 @@ export const Product = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="py-5 bg-purple-20">
+        <div className="py-5 bg-purple-20 w-full h-screen">
           <div className="flex justify-between">
-            <h1 className="text-center font-bold text-3xl mb-5 text-secondary">
+            <h1 className="font-bold text-3xl mb-5 text-secondary">
               Our Product
             </h1>
             <select
@@ -102,7 +104,7 @@ export const Product = () => {
               ))}
             </select>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-5 relative">
             {!productsFilter || productsFilter.length === 0 ? (
               <p>Product not found</p>
             ) : (
