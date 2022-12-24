@@ -10,6 +10,7 @@ import { ProductDetail } from "./pages/ProductDetail";
 import { BASE_URL } from "./api/api";
 import { AuthContext } from "./contexts/AuthContext";
 import { Navbar } from "./components/Templates/Navbar";
+import { NotFound } from "./pages/NotFound";
 
 export const App = () => {
   const [authUser, setAuthUser] = useState(null);
@@ -95,13 +96,15 @@ export const App = () => {
     },
     {
       path: "/*",
-      element: <>not found</>,
+      element: <NotFound />,
     },
   ];
 
+  const securePaths = ['/', '/transaction', '/product', '/profile', '/product/:id']
+  console.log(window.location.pathname.includes(securePaths));
   return (
     <AuthContext.Provider value={authContextValue}>
-      <header>{authUser && <Navbar />}</header>
+      <header>{(securePaths.includes(window.location.pathname) && authUser) && <Navbar />}</header>
       <main className="w-full relative bg-[#FFFDF8] px-5 sm:px-10 md:px-20 lg:px-40">
         <Routes>
           {paths.map((item, index) => (
@@ -109,7 +112,7 @@ export const App = () => {
           ))}
         </Routes>
       </main>
-      {authUser && (
+      {(securePaths.includes(window.location.pathname) && authUser) && (
         <footer>
           <div className=" z-10 w-full bottom-0 bg-secondary py-3">
             <div className="flex justify-center">

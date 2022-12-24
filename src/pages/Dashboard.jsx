@@ -41,8 +41,8 @@ export const Dashboard = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div className="py-5">
-          <div className="w-full h-[600px] rounded-xl mb-5">
+        <div className="pt-5">
+          <div className="w-full rounded-xl mb-5">
             <Swiper
               // install Swiper modules
               modules={[Navigation, Autoplay]}
@@ -76,7 +76,7 @@ export const Dashboard = () => {
             </Swiper>
           </div>
 
-          <div className="my-20">
+          <div className="mb-20">
             <h1 className="text-center font-bold text-3xl mb-5 text-primary">
               Product Category
             </h1>
@@ -85,8 +85,22 @@ export const Dashboard = () => {
                 // install Swiper modules
                 modules={[Navigation, Autoplay]}
                 loopedSlides={3}
-                spaceBetween={20}
+                spaceBetween={10}
                 slidesPerView={category.length > 3 ? 3 : category.length}
+                breakpoints={{
+                  300: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 40,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 50,
+                  },
+                }}
                 loop={category.length > 3 ? true : false}
                 autoplay={{
                   delay: 3000,
@@ -111,48 +125,3 @@ export const Dashboard = () => {
     </>
   );
 };
-
-// code_product
-// :
-// "P51010103"
-// created_at
-// :
-// "2022-07-17T17:58:06.272Z"
-// id
-// :
-// 103
-// name
-// :
-// "Token PLN 655.500"
-// operator
-// :
-// created_at
-// :
-// "2022-07-03T12:48:52.768Z"
-// id
-// :
-// 1
-// name
-// :
-// "Gopay"
-// [[Prototype]]
-// :
-// Object
-// operator_id
-// :
-// 1
-// price
-// :
-// 655500
-// product_type
-// :
-// {id: 51, name: 'Token PKN', created_at: '2022-07-03T12:40:53.936Z'}
-// product_type_id
-// :
-// 51
-// qty
-// :
-// 20
-// status
-// :
-// true

@@ -37,6 +37,7 @@ export const Navbar = () => {
 
   const logout = () => {
     setAuthUser(null);
+    localStorage.removeItem("tokenUser");
     setShowLogout(false);
     navigate("/login");
   };
@@ -144,11 +145,11 @@ export const Navbar = () => {
                     />
                     {showLogout && (
                       <div className="absolute -bottom-16 left-0 flex flex-col items-center rounded-xl -z-10 justify-center bg-primary shadow-sm">
-                        <h1 className="pt-20 text-white">{authUser?.name}</h1>
+                        <h1 className="pt-20 text-white">{user?.username}</h1>
                         <button
                           type="button"
                           onClick={() => logout()}
-                          className=" bg-white w-20 h-8 text-red-500 rounded-b-xl hover:bg-red-700 hover:text-white shadow-lg"
+                          className=" bg-white w-20 mt-1 h-8 text-red-500 rounded-b-xl hover:bg-red-700 hover:text-white shadow-lg"
                         >
                           Logout
                         </button>

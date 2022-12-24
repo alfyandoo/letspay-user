@@ -113,10 +113,10 @@ export const ListTransaction = ({
       {item.status === "pending" && (
         <button
           onClick={async () => {
-            const timer = setTimeout(() => {
-              confirmPayment();
+            const timer = setTimeout(async() => {
+              await confirmPayment();
             }, 10000);
-
+            getHistoryTransaction();
             return () => clearTimeout(timer);
           }}
           className="p-5 w-full mt-3 rounded-lg bg-blue-200 hover:bg-blue-400 hover:text-white"

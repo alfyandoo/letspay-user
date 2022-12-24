@@ -37,7 +37,7 @@ export const Profile = () => {
 
   const logout = () => {
     localStorage.removeItem("tokenUser");
-    setAuthUser(false);
+    setAuthUser(null);
     navigate("/login");
   };
 
