@@ -1,15 +1,18 @@
 import React, { useState } from "react";
 import { Detail } from "./Detail";
+import { useNavigate } from "react-router-dom";
+
 
 export const ListProduct = ({ item }) => {
   const [showDetailProduct, setShowDetailProduct] = useState(false);
+  const navigate = useNavigate()
 
   return (
     <>
     {showDetailProduct && <Detail />}
     <div
       className="border rounded-xl p-5 mb-5 cursor-pointer shadow-md hover:shadow-none w-full"
-      onClick={() => setShowDetailProduct((prevState) => !prevState)}
+      onClick={() => navigate(`/product/${item.id}`)}
     >
       <div className="flex">
         <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">

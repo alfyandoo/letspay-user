@@ -86,7 +86,7 @@ export const Product = () => {
       ) : (
         <div className="py-5 bg-purple-20 w-full h-screen">
           <div className="flex justify-between">
-            <h1 className="font-bold text-3xl mb-5 text-secondary">
+            <h1 className="font-bold text-3xl mb-5 text-primary">
               Our Product
             </h1>
             <select

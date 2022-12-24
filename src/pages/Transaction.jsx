@@ -39,7 +39,7 @@ export const Transaction = () => {
         <Loading />
       ) : (
         <div className="py-5">
-          <h1 className="font-bold text-3xl mb-5 text-secondary">
+          <h1 className="font-bold text-3xl text-primary">
             List Transaction
           </h1>
           <div className="grid grid-cols-1 mb-10">
@@ -48,7 +48,6 @@ export const Transaction = () => {
                 key={index}
                 item={item}
                 getHistoryTransaction={getHistoryTransaction}
-                setUpdateStatusProduct={setUpdateStatusProduct}
               />
             ))}
           </div>

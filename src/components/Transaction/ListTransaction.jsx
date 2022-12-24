@@ -8,6 +8,15 @@ export const ListTransaction = ({
 }) => {
   const confirmPayment = async () => {
     try {
+      await fetch(
+        `${BASE_URL}/payments/${item.code_transaction}/${item.price}`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("tokenUser")}`,
+          },
+        }
+      );
       const response = await fetch(
         `${BASE_URL}/payments/${item.code_transaction}/${item.price}`,
         {
@@ -18,13 +27,18 @@ export const ListTransaction = ({
         }
       );
       const data = await response.json();
-      
+
       if (data.messages === "success") {
         Swal.fire({
           icon: "success",
           title: "Success",
           text: "Payment Success",
         });
+        const timer = setTimeout(() => {
+          getHistoryTransaction();
+        }, 5000);
+
+        return () => clearTimeout(timer);
       }
     } catch (error) {
       throw new Error(`Error: ${error}`);
@@ -32,7 +46,11 @@ export const ListTransaction = ({
   };
 
   return (
-    <div className={`${item?.status === 'pending' ? 'bg-yellow-100' : 'bg-green-100'} rounded-lg p-5 my-5`}>
+    <div
+      className={`${
+        item?.status === "pending" ? "border-yellow-200" : "border-green-200"
+      } rounded-xl p-5 my-5 border mb-5 cursor-pointer shadow-md hover:shadow-none w-full`}
+    >
       <div class="flex">
         <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
           <p>Code Transaction</p>
@@ -94,7 +112,13 @@ export const ListTransaction = ({
 
       {item.status === "pending" && (
         <button
-          onClick={async () => await confirmPayment()}
+          onClick={async () => {
+            const timer = setTimeout(() => {
+              confirmPayment();
+            }, 10000);
+
+            return () => clearTimeout(timer);
+          }}
           className="p-5 w-full mt-3 rounded-lg bg-blue-200 hover:bg-blue-400 hover:text-white"
         >
           Confirm Payment

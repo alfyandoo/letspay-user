@@ -111,7 +111,7 @@ export const App = () => {
       </main>
       {authUser && (
         <footer>
-          <div className="fixed z-10 w-full bottom-0 bg-secondary py-3">
+          <div className=" z-10 w-full bottom-0 bg-secondary py-3">
             <div className="flex justify-center">
               <p className="text-white text-sm">
                 © 2022 All Rights Reserved. LETSPAY

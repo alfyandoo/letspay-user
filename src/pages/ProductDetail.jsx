@@ -56,7 +56,7 @@ export const ProductDetail = () => {
         <Loading />
       ) : (
         <div className="my-5">
-          <h1 className="font-bold text-3xl mb-5 text-secondary">
+          <h1 className="font-bold text-3xl mb-5 text-primary">
               Detail Product
             </h1>
           <Detail product={product} paymentMethod={paymentMethod} />

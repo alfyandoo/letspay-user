@@ -47,7 +47,7 @@ export const Profile = () => {
         <Loading />
       ) : (
         <div className="py-5 w-full h-screen">
-          <h1 className="font-bold text-3xl mb-5 text-secondary">My Profile</h1>
+          <h1 className="font-bold text-3xl mb-5 text-primary">My Profile</h1>
           <img
             src="https://ui-avatars.com/api/?name=alfyando&background=random"
             alt="user"
@@ -95,14 +95,14 @@ export const Profile = () => {
 
           <div className="flex space-x-5">
             <button
-              className="my-5 px-5 py-2 rounded-xl bg-green-400 hover:bg-green-300 hover:text-gray-600"
+              className="my-5 px-5 py-2 rounded-xl bg-white border border-primary hover:bg-primary hover:text-white"
               onClick={() => navigate("/transaction")}
             >
               My Transaction
             </button>
 
             <button
-              className="my-5 px-5 py-2 rounded-xl bg-red-400 hover:bg-red-300 hover:text-gray-600"
+              className="my-5 px-5 py-2 rounded-xl border bg-white border-red-600 hover:bg-red-600 hover:text-white"
               onClick={() => logout()}
             >
               Logout

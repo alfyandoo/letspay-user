@@ -42,7 +42,7 @@ export const Dashboard = () => {
         <Loading />
       ) : (
         <div className="py-5">
-          <div className="w-full h-[600px] rounded-lg mb-5">
+          <div className="w-full h-[600px] rounded-xl mb-5">
             <Swiper
               // install Swiper modules
               modules={[Navigation, Autoplay]}
@@ -77,7 +77,7 @@ export const Dashboard = () => {
           </div>
 
           <div className="my-20">
-            <h1 className="text-center font-bold text-3xl mb-5 text-secondary">
+            <h1 className="text-center font-bold text-3xl mb-5 text-primary">
               Product Category
             </h1>
             <div>

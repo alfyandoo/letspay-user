@@ -12,8 +12,8 @@ export const Navbar = () => {
   const navigate = useNavigate();
   console.log(authUser, "authUser");
   useEffect(() => {
-    getProfile()
-  }, [])
+    getProfile();
+  }, []);
 
   const getProfile = async () => {
     try {
@@ -135,17 +135,20 @@ export const Navbar = () => {
                     }}
                   >
                     <img
-                      src={`https://ui-avatars.com/api/?name=${user.username}&background=random`}
-                      alt={user.username}
+                      src={
+                        !!user &&
+                        `https://ui-avatars.com/api/?name=${user.username}&background=random`
+                      }
+                      alt="user"
                       className="w-12 h-12 rounded-full bg-blue-100"
                     />
                     {showLogout && (
-                      <div className="absolute top-0 left-20 flex flex-col items-center justify-center">
-                        <h1>{authUser?.name}</h1>
+                      <div className="absolute -bottom-16 left-0 flex flex-col items-center rounded-xl -z-10 justify-center bg-primary shadow-sm">
+                        <h1 className="pt-20 text-white">{authUser?.name}</h1>
                         <button
                           type="button"
                           onClick={() => logout()}
-                          className=" bg-white w-20 h-8 rounded-lg text-red-500 hover:text-red-700 shadow-lg"
+                          className=" bg-white w-20 h-8 text-red-500 rounded-b-xl hover:bg-red-700 hover:text-white shadow-lg"
                         >
                           Logout
                         </button>
