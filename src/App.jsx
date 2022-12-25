@@ -101,7 +101,7 @@ export const App = () => {
   ];
 
   const securePaths = ['/', '/transaction', '/product', '/profile', '/product/:id']
-  console.log(window.location.pathname.includes(securePaths));
+
   return (
     <AuthContext.Provider value={authContextValue}>
       <header>{(securePaths.includes(window.location.pathname) && authUser) && <Navbar />}</header>

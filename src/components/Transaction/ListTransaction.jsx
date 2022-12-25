@@ -51,62 +51,62 @@ export const ListTransaction = ({
         item?.status === "pending" ? "border-yellow-200" : "border-green-200"
       } rounded-xl p-5 my-5 border mb-5 cursor-pointer shadow-md hover:shadow-none w-full`}
     >
-      <div class="flex">
-        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+      <div className="flex">
+        <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
           <p>Code Transaction</p>
-          <p class="mr-2 font-bold">:</p>
+          <p className="mr-2 font-bold">:</p>
         </div>
-        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
-          <p class="font-bold">{item.code_transaction}</p>
+        <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p className="font-bold">{item.code_transaction}</p>
         </div>
       </div>
 
-      <div class="flex">
-        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+      <div className="flex">
+        <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
           <p>Produk</p>
-          <p class="mr-2 font-bold">:</p>
+          <p className="mr-2 font-bold">:</p>
         </div>
-        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
-          <p class="font-bold">{item?.product?.name}</p>
+        <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p className="font-bold">{item?.product?.name}</p>
         </div>
       </div>
-      <div class="flex">
-        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+      <div className="flex">
+        <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
           <p>Status</p>
-          <p class="mr-2 font-bold">:</p>
+          <p className="mr-2 font-bold">:</p>
         </div>
-        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
-          <p class="font-bold">{item.status}</p>
+        <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p className="font-bold">{item.status}</p>
         </div>
       </div>
 
-      <div class="flex">
-        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+      <div className="flex">
+        <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
           <p>Price</p>
-          <p class="mr-2 font-bold">:</p>
+          <p className="mr-2 font-bold">:</p>
         </div>
-        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
-          <p class="font-bold">{item.price}</p>
+        <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p className="font-bold">{item.price}</p>
         </div>
       </div>
 
-      <div class="flex">
-        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+      <div className="flex">
+        <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
           <p>Username</p>
-          <p class="mr-2 font-bold">:</p>
+          <p className="mr-2 font-bold">:</p>
         </div>
-        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
-          <p class="font-bold">{item.user.username}</p>
+        <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p className="font-bold">{item.user.username}</p>
         </div>
       </div>
 
-      <div class="flex">
-        <div class="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+      <div className="flex">
+        <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
           <p>Payment method</p>
-          <p class="mr-2 font-bold">:</p>
+          <p className="mr-2 font-bold">:</p>
         </div>
-        <div class="w-[60%] sm:w-[60%] md:w-[75%]">
-          <p class="font-bold">{item.payment_method.name}</p>
+        <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+          <p className="font-bold">{item.payment_method.name}</p>
         </div>
       </div>
 

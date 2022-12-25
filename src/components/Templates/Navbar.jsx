@@ -10,7 +10,7 @@ export const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
   const navigate = useNavigate();
-  console.log(authUser, "authUser");
+
   useEffect(() => {
     getProfile();
   }, []);
@@ -24,7 +24,7 @@ export const Navbar = () => {
         },
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
+
       if (data.messages === "success") {
         setUser(data.user);
       }
@@ -32,8 +32,6 @@ export const Navbar = () => {
       throw new Error(`Error: ${error}`);
     }
   };
-
-  console.log(user, "user");
 
   const logout = () => {
     setAuthUser(null);

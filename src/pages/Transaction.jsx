@@ -22,7 +22,7 @@ export const Transaction = () => {
         },
       });
       const data = await response.json();
-      console.log(JSON.stringify(data), "list");
+
       if (data.messages === "success") {
         setTransaction(data.transactions);
       }

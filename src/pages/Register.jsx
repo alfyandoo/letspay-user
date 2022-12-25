@@ -15,7 +15,6 @@ export const Register = ({ setShowRegister }) => {
   const navigate = useNavigate();
 
   const register = async () => {
-    console.log({ email, username, password, name, Phone });
     try {
       const response = await fetch(`${BASE_URL}/users`, {
         method: "POST",
@@ -32,7 +31,6 @@ export const Register = ({ setShowRegister }) => {
       });
 
       const data = await response.json();
-      console.log(data);
 
       if (data.messages === "error insert user") {
         Swal.fire({

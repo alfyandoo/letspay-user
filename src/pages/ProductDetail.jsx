@@ -23,7 +23,7 @@ export const ProductDetail = () => {
         method: "GET",
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
+
       if (data.messages === "success") {
         setProduct(data.product);
       }
@@ -40,7 +40,7 @@ export const ProductDetail = () => {
         method: "GET",
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
+
       if (data.messages === "success") {
         setPaymentMethod(data.payment_methods);
       }

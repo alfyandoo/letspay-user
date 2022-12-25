@@ -25,7 +25,7 @@ export const Profile = () => {
         },
       });
       const data = await response.json();
-      console.log(JSON.stringify(data));
+
       if (data.messages === "success") {
         setUser(data.user);
       }
@@ -53,43 +53,43 @@ export const Profile = () => {
             alt="user"
             className="rounded-full mb-5"
           />
-          <div class="flex">
-            <div class="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
+          <div className="flex">
+            <div className="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
               <p>Name</p>
-              <p class="mr-2 font-bold">:</p>
+              <p className="mr-2 font-bold">:</p>
             </div>
-            <div class="w-[60%] sm:w-[60%] md:w-[90%]">
-              <p class="font-bold">{user.name}</p>
+            <div className="w-[60%] sm:w-[60%] md:w-[90%]">
+              <p className="font-bold">{user.name}</p>
             </div>
           </div>
 
-          <div class="flex">
-            <div class="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
+          <div className="flex">
+            <div className="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
               <p>Email</p>
-              <p class="mr-2 font-bold">:</p>
+              <p className="mr-2 font-bold">:</p>
             </div>
-            <div class="w-[60%] sm:w-[60%] md:w-[90%]">
-              <p class="font-bold">{user.email}</p>
+            <div className="w-[60%] sm:w-[60%] md:w-[90%]">
+              <p className="font-bold">{user.email}</p>
             </div>
           </div>
 
-          <div class="flex">
-            <div class="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
+          <div className="flex">
+            <div className="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
               <p>Username</p>
-              <p class="mr-2 font-bold">:</p>
+              <p className="mr-2 font-bold">:</p>
             </div>
-            <div class="w-[60%] sm:w-[60%] md:w-[90%]">
-              <p class="font-bold">{user.username}</p>
+            <div className="w-[60%] sm:w-[60%] md:w-[90%]">
+              <p className="font-bold">{user.username}</p>
             </div>
           </div>
 
-          <div class="flex">
-            <div class="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
+          <div className="flex">
+            <div className="w-[40%] sm:w-[40%] md:w-[10%] flex justify-between">
               <p>Phone</p>
-              <p class="mr-2 font-bold">:</p>
+              <p className="mr-2 font-bold">:</p>
             </div>
-            <div class="w-[60%] sm:w-[60%] md:w-[90%]">
-              <p class="font-bold">{user.phone}</p>
+            <div className="w-[60%] sm:w-[60%] md:w-[90%]">
+              <p className="font-bold">{user.phone}</p>
             </div>
           </div>
 

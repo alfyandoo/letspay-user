@@ -29,7 +29,6 @@ export const Login = ({ authUser }) => {
       });
 
       const data = await response.json();
-      console.log(data);
 
       if (data.messages === "username atau password salah") {
         Swal.fire({
