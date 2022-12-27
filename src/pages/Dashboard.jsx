@@ -58,7 +58,7 @@ export const Dashboard = () => {
               <SwiperSlide>
                 <div>
                   <img
-                    src="https://www.rumahweb.com/journal/wp-content/uploads/2006/02/Banner-Pengertian-Web-Hosting-Fitur-dan-Cara-Dapat-Gratisannya-740x389.png"
+                    src="/images/banner-lestpay-1.png"
                     alt="img_banner"
                     className="w-full rounded-xl"
                   />
@@ -67,7 +67,7 @@ export const Dashboard = () => {
               <SwiperSlide>
                 <div>
                   <img
-                    src="https://www.rumahweb.com/journal/wp-content/uploads/2006/02/Banner-Pengertian-Web-Hosting-Fitur-dan-Cara-Dapat-Gratisannya-740x389.png"
+                    src="/images/banner-lestpay-2.png"
                     alt="img_banner"
                     className="w-full rounded-xl"
                   />

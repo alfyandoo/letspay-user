@@ -43,10 +43,42 @@ export const Detail = ({ product, paymentMethod }) => {
   return (
     <div className="w-full h-screen">
       <div className="border rounded-xl p-5 bg-white">
-        <p>{product?.name}</p>
-        <p>{product?.product_type?.name}</p>
-        <p>Rp{product?.price}</p>
-        <p>{product?.operator?.name}</p>
+        <div className="flex">
+          <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+            <p>Product</p>
+            <p className="mr-2 font-bold">:</p>
+          </div>
+          <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+            <p className="font-bold">{product?.name}</p>
+          </div>
+        </div>
+        <div className="flex">
+          <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+            <p>Category</p>
+            <p className="mr-2 font-bold">:</p>
+          </div>
+          <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+            <p className="font-bold">{product?.product_type?.name}</p>
+          </div>
+        </div>
+        <div className="flex">
+          <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+            <p>Price</p>
+            <p className="mr-2 font-bold">:</p>
+          </div>
+          <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+            <p className="font-bold">Rp{product?.price}</p>
+          </div>
+        </div>
+        <div className="flex">
+          <div className="w-[40%] sm:w-[40%] md:w-[25%] flex justify-between">
+            <p>Operator</p>
+            <p className="mr-2 font-bold">:</p>
+          </div>
+          <div className="w-[60%] sm:w-[60%] md:w-[75%]">
+            <p className="font-bold">{product?.operator?.name}</p>
+          </div>
+        </div>
       </div>
 
       <div className="flex flex-col">
