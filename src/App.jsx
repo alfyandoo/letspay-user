@@ -104,7 +104,7 @@ export const App = () => {
 
   return (
     <AuthContext.Provider value={authContextValue}>
-      <header>{(securePaths.includes(window.location.pathname) && authUser) && <Navbar />}</header>
+      <header>{authUser && <Navbar />}</header>
       <main className="w-full relative bg-[#FFFDF8] px-5 sm:px-10 md:px-20 lg:px-40">
         <Routes>
           {paths.map((item, index) => (
