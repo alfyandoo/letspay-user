@@ -49,7 +49,7 @@ export const Profile = () => {
         <div className="py-5 w-full h-screen">
           <h1 className="font-bold text-3xl mb-5 text-primary">My Profile</h1>
           <img
-            src="https://ui-avatars.com/api/?name=alfyando&background=random"
+            src={`https://ui-avatars.com/api/?name=${user.username}&background=random`}
             alt="user"
             className="rounded-full mb-5"
           />
